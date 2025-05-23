@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráficos Tesouro Direto (Pygal)</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .chart-container { margin-bottom: 30px; border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9; }
+        .insight {
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #eef;
+            border-left: 4px solid #6495ED;
+            border-radius: 4px;
+        }
+        img { max-width: 100%; height: auto; display: block; } /* Estilo para as imagens SVG */
+        .download-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .download-link:hover {
+            background-color: #0056b3;
+        }
+        h1, h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Gráficos do Tesouro Direto</h1>
+
+    <h2>Média do Volume Anual de Vendas por Tipo</h2>
+    <div class="chart-container">
+        <img src="{{ url_for('static', filename=plot_volume_anual_file) }}" alt="Gráfico de Volume Anual">
+        <a href="{{ url_for('static', filename=plot_volume_anual_file) }}" download="{{ plot_volume_anual_file }}" class="download-link">Baixar Gráfico de Volume Anual (SVG)</a>
+    </div>
+    <p class="insight">{{ insight_volume_anual }}</p>
+
+    <h2>Participação Percentual Mensal por Tipo</h2>
+    <div class="chart-container">
+        <img src="{{ url_for('static', filename=plot_participacao_mensal_file) }}" alt="Gráfico de Participação Mensal">
+        <a href="{{ url_for('static', filename=plot_participacao_mensal_file) }}" download="{{ plot_participacao_mensal_file }}" class="download-link">Baixar Gráfico de Participação Mensal (SVG)</a>
+    </div>
+    <p class="insight">{{ insight_participacao_mensal }}</p>
+
+    <h2>Correlação entre Volume de Vendas Anual e Taxa Selic</h2>
+    <div class="chart-container">
+        <img src="{{ url_for('static', filename=plot_correlacoes_file) }}" alt="Gráfico de Correlações">
+        <a href="{{ url_for('static', filename=plot_correlacoes_file) }}" download="{{ plot_correlacoes_file }}" class="download-link">Baixar Gráfico de Correlações (SVG)</a>
+    </div>
+    <p class="insight">{{ insight_correlacoes }}</p>
+</body>
+</html>
